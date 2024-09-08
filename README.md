@@ -1,2 +1,3 @@
-# cs602-assignments
-Homework assignments for CS602 Server-Side Web Development
+# Server-Side Web Development
+
+Assignments and project work for CS-602 Server-Side Web Development.
