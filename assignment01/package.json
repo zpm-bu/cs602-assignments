@@ -1,0 +1,19 @@
+{
+  "name": "temperatureconversion",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Convert temperatures through a CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zpm-bu/cs602-assignments/"
+  },
+  "author": "zpm",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^22.5.4"
+  }
+}
