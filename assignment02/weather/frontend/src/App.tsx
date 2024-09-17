@@ -1,51 +1,76 @@
-import { useState } from "react";
-
+import { ChangeEvent, useState } from "react";
+import {
+  AppShell,
+  Container,
+  Group,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
 import "@mantine/core/styles.css";
-import { AppShell, Container, MantineProvider, Title } from "@mantine/core";
-import { theme } from "./theme";
-
-import Head from "./Head.tsx";
-import LocationForm from "./LocationForm.tsx";
-import ReportsList from "./ReportsList.tsx";
-import { LocationData, Backend } from "./types.d.tsx";
+import classes from "./head.module.css";
+import { LocationData } from "./types.d.tsx";
 
 function App() {
-  const [locationData, setLocationData] = useState<LocationData>({
-    city: undefined,
-    state: undefined,
-    zip: undefined,
-    latitude: undefined,
-    longitude: undefined,
-  });
+  const [location, setLocation] = useState<LocationData>({});
 
-  const [backend, setBackend] = useState<Backend>("node");
+  function handleFieldChange(key: "city" | "state") {
+    return (event: ChangeEvent<HTMLInputElement>) => {
+      setLocation({
+        ...location,
+        [key]: event.currentTarget.value,
+      });
+    };
+  }
+
+  async function getCoords() {
+    const url = `http://localhost:3000/coords?city=${location.city}&state=${location.state}`;
+    if (location.city && location.state) {
+      fetch(url)
+        .then((response) => response.json())
+        .then((json) => {
+          setLocation({
+            ...location,
+            latitude: json.latitude,
+            longitude: json.longitude,
+          });
+        });
+    }
+  }
 
   return (
-    <MantineProvider theme={theme}>
-      <AppShell header={{ height: 60 }} padding="md">
-        <AppShell.Header>
-          {/* Head needs access to both parts of backend so it can set w/ the switch */}
-          <Head backend={backend} setBackend={setBackend} />
-        </AppShell.Header>
-        <AppShell.Main>
-          <Container size="md">
-            {/* Use a little form to set the locationData */}
-            <Title order={2}>Set location</Title>
-            <LocationForm
-              locationData={locationData}
-              setLocationData={setLocationData}
-            />
-            {/* Displays for the data itself */}
-            <Title order={2}>Reports</Title>
-            <ReportsList
-              locationData={locationData}
-              setLocationData={setLocationData}
-              withBackend={backend}
-            />
+    <AppShell header={{ height: 60 }} padding="md">
+      <AppShell.Header>
+        <header className={classes.header}>
+          <Container size="md" className={classes.inner}>
+            <Title order={1}>Weather</Title>
           </Container>
-        </AppShell.Main>
-      </AppShell>
-    </MantineProvider>
+        </header>
+      </AppShell.Header>
+      <AppShell.Main>
+        <Container size="md">
+          <Title order={2}>Location</Title>
+          <Group gap="md">
+            <TextInput
+              label="City"
+              placeholder="Boston"
+              onChange={handleFieldChange("city")}
+              onBlur={getCoords}
+            />
+            <TextInput
+              label="State"
+              placeholder="MA"
+              onChange={handleFieldChange("state")}
+              onBlur={getCoords}
+            />
+            <Text>
+              {location.latitude}, {location.longitude}
+            </Text>
+          </Group>
+          <Title order={2}>Reports</Title>
+        </Container>
+      </AppShell.Main>
+    </AppShell>
   );
 }
 

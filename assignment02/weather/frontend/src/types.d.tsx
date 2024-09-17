@@ -1,9 +1,16 @@
 export type LocationData = {
-  city: string | undefined;
-  state: string | undefined;
-  zip: string | undefined;
-  latitude: number | undefined;
-  longitude: number | undefined;
+  city?: string;
+  state?: string;
+  latitude?: number;
+  longitude?: number;
 };
 
-export type Backend = "php" | "node";
+export type ReportData = {
+  name: string;
+  latitude: string;
+  longitude: string;
+  temperature: number;
+  icon: string;
+  humidity: number;
+  windSpeed: number;
+};
