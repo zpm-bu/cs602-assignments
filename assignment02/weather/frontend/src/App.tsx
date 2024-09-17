@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 import "@mantine/core/styles.css";
-import { AppShell, MantineProvider } from "@mantine/core";
+import { AppShell, Container, MantineProvider, Title } from "@mantine/core";
 import { theme } from "./theme";
 
 import Head from "./Head.tsx";
+import LocationForm from "./LocationForm.tsx";
+import ReportsList from "./ReportsList.tsx";
 import { LocationData, Backend } from "./types.d.tsx";
 
 function App() {
@@ -26,10 +28,21 @@ function App() {
           <Head backend={backend} setBackend={setBackend} />
         </AppShell.Header>
         <AppShell.Main>
-          {/* Use a little form to set the locationData */}
-          <></>
-          {/* Displays for the data itself */}
-          <></>
+          <Container size="md">
+            {/* Use a little form to set the locationData */}
+            <Title order={2}>Set location</Title>
+            <LocationForm
+              locationData={locationData}
+              setLocationData={setLocationData}
+            />
+            {/* Displays for the data itself */}
+            <Title order={2}>Reports</Title>
+            <ReportsList
+              locationData={locationData}
+              setLocationData={setLocationData}
+              withBackend={backend}
+            />
+          </Container>
         </AppShell.Main>
       </AppShell>
     </MantineProvider>
