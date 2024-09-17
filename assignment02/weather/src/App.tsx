@@ -5,10 +5,13 @@ import { AppShell, MantineProvider } from "@mantine/core";
 import { theme } from "./theme";
 
 import Head from "./Head.tsx";
-import { Coords, Backend } from "./types.d.tsx";
+import { LocationData, Backend } from "./types.d.tsx";
 
 function App() {
-  const [coords, setCoords] = useState<Coords>({
+  const [locationData, setLocationData] = useState<LocationData>({
+    city: undefined,
+    state: undefined,
+    zip: undefined,
     latitude: undefined,
     longitude: undefined,
   });
@@ -22,7 +25,12 @@ function App() {
           {/* Head needs access to both parts of backend so it can set w/ the switch */}
           <Head backend={backend} setBackend={setBackend} />
         </AppShell.Header>
-        <AppShell.Main></AppShell.Main>
+        <AppShell.Main>
+          {/* Use a little form to set the locationData */}
+          <></>
+          {/* Displays for the data itself */}
+          <></>
+        </AppShell.Main>
       </AppShell>
     </MantineProvider>
   );

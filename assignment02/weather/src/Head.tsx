@@ -1,7 +1,7 @@
 import { Container, Title, Switch } from "@mantine/core";
 import classes from "./head.module.css";
 
-import { Backend, flipBackend } from "./types.d.tsx";
+import { Backend } from "./types.d.tsx";
 
 type Props = {
   backend: Backend;
@@ -16,7 +16,9 @@ function Head(props: Props) {
         <Switch
           label={props.backend}
           labelPosition="left"
-          onChange={() => props.setBackend(flipBackend(props.backend))}
+          onChange={() => {
+            props.setBackend(props.backend == "node" ? "php" : "node");
+          }}
         />
       </Container>
     </header>

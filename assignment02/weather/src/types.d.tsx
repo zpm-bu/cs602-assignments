@@ -1,10 +1,9 @@
-export type Coords = {
+export type LocationData = {
+  city: string | undefined;
+  state: string | undefined;
+  zip: string | undefined;
   latitude: number | undefined;
   longitude: number | undefined;
 };
 
 export type Backend = "php" | "node";
-
-export function flipBackend(current: Backend): Backend {
-  return current === "node" ? "php" : "node";
-}
