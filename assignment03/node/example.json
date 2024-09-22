@@ -1,0 +1,50 @@
+[
+  {
+    "record_id": "asdf-1234",
+    "semester": "F24",
+    "student_name": "John Doe",
+    "bu_id": "U55555555",
+    "program_of_study": "MS Computer Science",
+    "courses": [
+      {
+        "course_id": "METCS602",
+        "course_name": "Server-Side Web Development",
+        "course_section": "A1",
+        "start_time": "1800",
+        "duration": "9900",
+        "building_code": "EPC",
+        "room_number": "206",
+        "course_credits": 4
+      },
+      {
+        "course_id": "METCS579",
+        "course_name": "Database Management",
+        "course_section": "A3",
+        "start_time": "1800",
+        "duration": "9900",
+        "building_code": "CGS",
+        "room_number": "323",
+        "course_credits": 4
+      }
+    ]
+  },
+  {
+    "record_id": "cdef-6789",
+    "semester": "F24",
+    "student_name": "Jane Doe",
+    "bu_id": "U56666666",
+    "program_of_study": "MS Computer Science",
+    "courses": [
+      {
+        "course_id": "METCS579",
+        "course_name": "Database Management",
+        "course_section": "A3",
+        "start_time": "1800",
+        "duration": "9900",
+        "building_code": "CGS",
+        "room_number": "323",
+        "course_credits": 4
+      }
+    ]
+  }
+]

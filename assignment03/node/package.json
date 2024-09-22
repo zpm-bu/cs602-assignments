@@ -1,0 +1,25 @@
+{
+  "name": "json2excel",
+  "version": "0.0.0",
+  "description": "Process JSON to Excel",
+  "type": "module",
+  "main": "process.js",
+  "scripts": {
+    "test": "node process.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zpm-bu/cs602-assignments.git"
+  },
+  "author": "zpm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zpm-bu/cs602-assignments/issues"
+  },
+  "homepage": "https://github.com/zpm-bu/cs602-assignments#readme",
+  "dependencies": {
+    "chokidar": "^4.0.0",
+    "dayjs": "^1.11.13",
+    "exceljs": "^4.4.0"
+  }
+}
