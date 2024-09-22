@@ -1,0 +1,20 @@
+{
+    "name": "zpm/phpconverter",
+    "description": "Convert JSON to Excel",
+    "type": "project",
+    "require": {
+        "phpoffice/phpspreadsheet": "^2.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Zpm\\Phpconverter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Zachary Moring",
+            "email": "zpm@bu.edu"
+        }
+    ]
+}
