@@ -1,0 +1,26 @@
+{
+  "name": "webstockstets",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Homework assignment: Forward requests via websocket",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zpm-bu/cs602-assignments.git"
+  },
+  "author": "~zpm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zpm-bu/cs602-assignments/issues"
+  },
+  "homepage": "https://github.com/zpm-bu/cs602-assignments#readme",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/ws": "^8.5.12",
+    "express": "^4.21.0",
+    "ws": "^8.18.0"
+  }
+}
