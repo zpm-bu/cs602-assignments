@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Problem 10</title>
+    </head>
+    <body>
+        <h1>Problem 10</h1>
+        <p>I have a lot of opinions on this since I used to do databases for my day job. I'll try to be concise.</p>
+        <h2>Schema</h2>
+        <p>
+            The most significant difference is that the relational database paradigm is focused on the idea of a schema. Every RDB has a schema defined in terms of tables and keys and whatnot.
+        </p>
+        <p>
+            There <i>are</i> schemaful NoSQL databases, which use some kind of alternate notion of a schema than just tables and columns and keys. However, there are also <i>schema-less</i> NoSQL databases (like of course Mongo) which don't have a schema at all.
+        </p>
+        <h2>Language</h2>
+        <p>The standard language for a relational database is right proper SQL, like Codd intended.</p>
+        <p>NoSQL databases have their own methods. Mongo doesn't really have a language at all, beyond basic JSON notation.</p>
+        <p>
+            Something like BigTable or Neo4j, meanwhile, have their own "<code>*QL</code>" languages, like Neo4j's own GQL (Graph Query Language).
+        </p>
+        <h2>ACID Compliance</h2>
+        <p>
+            ACID compliance is a <b>requirement</b> for a relational DB according to the SQL standard.
+        </p>
+        <p>
+            ACID compliance is a <b>not</b> assured for all NoSQL database engines. Some do, some don't.
+        </p>
+        <p>
+            This is why (in my professional opinion) you're almost always going to end up back at a SQL database for your core operations. I can't deny that there are great use cases for NoSQL systems, but your core data <i>wants</i> ACID compliance, so you can easily maintain atomic backups and so that your systems don't burn down when a query fails.
+        </p>
+        <h2>"""Scale"""</h2>
+        <p>
+            Another difference people will <i>tell</i> you is the scaling issues between SQL and NoSQL databases. For example, a NoSQL database like the ddb under Apache Spark will 'scale' infinitely sideways by just adding more machines.
+        </p>
+        <p>I, however, hasten to point out the following:</p>
+        <ol>
+            <li>
+                Does your organization <b>REALLY</b> need infinite scaling? Chances are you can reasonably estimate both your typical usage and your best-case growth and scale enough SQL cores to handle it. Plus, after a certain size, you just <i>can't</i> respond rapidly enough running on anything other than redis, so you're really bottlenecking at your db-to-redis pipeline, not at the db engine itself.
+            </li>
+            <li>
+                Almost all "scaling" issues are engine optimization issues anyway. Hire a good DB specialist and stop using amateurish queries. Build high-speed views and normalize your data and you'll be amazed how much faster it all gets.
+            </li>
+        </ol>
+    </body>
+</html>

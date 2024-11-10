@@ -57,7 +57,7 @@ if (!permittedUnits.includes(targetUnit)) {
 
 const conversion_function = convert[sourceUnit][targetUnit];
 console.log(
-  `${degrees} degrees ${sourceUnit} is equal to ${
-    conversion_function(degrees)
-  } degrees ${targetUnit}`,
+  `${degrees} degrees ${sourceUnit} is equal to ${conversion_function(
+    degrees,
+  )} degrees ${targetUnit}`,
 );

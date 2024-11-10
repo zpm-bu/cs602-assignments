@@ -1,0 +1,15 @@
+{
+    "name": "zacha/problem4",
+    "autoload": {
+        "psr-4": {
+            "Zacha\\Problem4\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Zachary Moring",
+            "email": "zpm@bu.edu"
+        }
+    ],
+    "require": {}
+}
