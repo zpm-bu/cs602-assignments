@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Problem 4</title>
+    </head>
+    <body>
+        <h1>Problem 4</h1>
+        <div>
+            <label for="id_input_a">Value a:</label>
+            <input id="id_input_a" type="number" value="0">
+        </div>
+        <div>
+            <label for="id_input_b">Value b:</label>
+            <input id="id_input_b" type="number" value="0">
+        </div>
+        <h2>Sum</h2>
+        <button id="id_submit_get">Sum</button>
+        <div id="id_result_1"></div>
+        <h2>Multiply</h2>
+        <button id="id_submit_post">Multiply</button>
+        <div id="id_result_2"></div>
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("id_submit_get").addEventListener("click", async () => {
+                const a = document.getElementById("id_input_a").value;
+                const b = document.getElementById("id_input_b").value;
+
+                const resultDiv = document.getElementById("id_result_1");
+
+                const response = await fetch(`http://localhost:3004/getSummation/${a}/${b}`);
+                const json = await response.json();
+
+                resultDiv.textContent = `Sum: ${json.sum}`;
+            });
+            document.getElementById("id_submit_post").addEventListener("click", async () => {
+                const a = document.getElementById("id_input_a").value;
+                const b = document.getElementById("id_input_b").value;
+
+                const resultDiv = document.getElementById("id_result_2");
+
+                const response = await fetch("http://localhost:3004/getMultiplication", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({ a: a, b: b })
+                });
+                const json = await response.json();
+
+                resultDiv.textContent = `Product: ${json.mult}`;
+            });
+        });
+        </script>
+    </body>
+</html>

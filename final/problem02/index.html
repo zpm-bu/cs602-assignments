@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Problem 2</title>
+    </head>
+    <body>
+        <h1>Validate password</h1>
+        <p>Enter your password to check it against the rules.</p>
+        <div>
+            <label for="id_password">Password:</label>
+            <input id="id_password" name="password" type="password">
+        </div>
+        <button id="id_submit">Submit</button>
+        <div id="id_result"></div>
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("id_submit").addEventListener("click", async () => {
+                const password = document.getElementById("id_password").value;
+                const resultDiv = document.getElementById("id_result");
+
+                const response = await fetch("http://localhost:3002/validate", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({ password: password })
+                });
+                const json = await response.json();
+
+                resultDiv.textContent = `${json.evaluation_code}: ${json.evaluation_msg}`;
+            });
+        });
+        </script>
+    </body>
+</html>
